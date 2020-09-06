@@ -1,26 +1,33 @@
+/**
+ * App Component
+ */
+
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux';
+
+import MovieReview from './components/movieReview';
+import store from './redux/store';
+
+import { BrowserRouter, Route } from 'react-router-dom';
+import MovieDetails from './components/movieDetails';
+
+import FavouriteMovieItems from './components/favouriteItems';
+import Navbar from './components/navBar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store} >
+          <BrowserRouter>
+          <Navbar />
+            <Route exact path='/' component={MovieReview} />
+            <Route exact path='/movie-details/:id' component={MovieDetails} />
+            <Route exact path='/favourite-movies' component={FavouriteMovieItems} />
+          </BrowserRouter>
+      </Provider>
     </div>
   );
 }
 
 export default App;
+
