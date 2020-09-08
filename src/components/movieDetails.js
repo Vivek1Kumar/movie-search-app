@@ -22,13 +22,27 @@ class MovieDetails extends Component {
         return (
             <div className="movie-list">
                 {this.props.movies.movieDetails && this.props.movies.movieDetails ?
-                    <>
+                    <>  {newData.poster_path == null ?
+                        <>
+                            <div className="img-tag-details">
+                                {newData.original_title}
+                            </div>
+                            <div>
+                            <div>{newData.original_title}<span> ({newData.vote_average})</span></div>
+                            <div>{newData.release_date} | {newData.popularity}</div>
+                            <div>{newData.overview}</div>
+                            </div>
+                        </>
+                        : 
+                        <>
                         <img src={`https://image.tmdb.org/t/p/w220_and_h330_face${abcImg}`} alt={newData.original_title} height="300px" width='280px' />
                         <div>
                             <div>{newData.original_title}<span> ({newData.vote_average})</span></div>
                             <div>{newData.release_date} | {newData.popularity}</div>
                             <div>{newData.overview}</div>
                         </div>
+                        </>
+                        }
                     </>
                     : ''
                 }

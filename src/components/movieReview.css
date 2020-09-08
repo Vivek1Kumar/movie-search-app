@@ -117,6 +117,13 @@ img {
   padding: 20px;
 }
 
+.img-tag-details {
+  background: lightblue;
+  height: 200px;
+  width: 280px;
+  text-align: center;
+  padding: 20px;
+}
 .images-list {
     height: 200px;
     width: 100%;
